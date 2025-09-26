@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
 
+
 export interface  ICourse {
     courseId: string;
     title: string;

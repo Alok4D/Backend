@@ -1,6 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { courseRoutes } from "./app/models/course/course.routes";
+import { mentorRoutes } from "./app/models/Mentor/mentor.routes";
 
 dotenv.config();
 
@@ -11,11 +13,16 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+//Routes
+
+app.use("/api/courses", courseRoutes);
+app.use("/api/metors", mentorRoutes);
+
+
 // test route
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World! 🚀");
+  res.send(" LMS Server is Running 🚀");
 });
-
 
 // start server
 app.listen(port, () => {
