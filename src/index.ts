@@ -3,6 +3,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { courseRoutes } from "./app/models/course/course.routes";
 import { mentorRoutes } from "./app/models/Mentor/mentor.routes";
+import { studentRoutes } from "./app/models/Student/student.routes";
+import { categoryRoutes } from "./app/models/Category/category.routes";
+import { reviewRoutes } from "./app/models/Review/review.routes";
 
 dotenv.config();
 
@@ -14,10 +17,11 @@ app.use(cors());
 app.use(express.json());
 
 //Routes
-
 app.use("/api/courses", courseRoutes);
 app.use("/api/metors", mentorRoutes);
-
+app.use("/api/students", studentRoutes);
+app.use("/api/categorys", categoryRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 // test route
 app.get("/", (req: Request, res: Response) => {
