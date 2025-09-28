@@ -15,6 +15,26 @@ const getAllMentorsController = async (req: Request, res: Response) => {
   }
 };
 
+const createMentor = async(req: Request, res: Response) => {
+
+   try {
+    const body = req.body;
+    const result = await MentorsServices.createMentor(body);
+    res.status(201).json({
+      success: true,
+      message: "Mentor created successfully",
+      data: result
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to create mentor",
+      error
+    });
+  }
+}
+
 export const mentorController = {
-    getAllMentorsController
+    getAllMentorsController,
+    createMentor
 }

@@ -3,7 +3,8 @@ import { mentorController } from "./mentor.controller";
 
 const router = express.Router();
 
-// /api/courses
+// /api/metors/createMentor
 router.get('/', mentorController.getAllMentorsController);
+router.post('/createMentor', mentorController.createMentor);
 
 export const mentorRoutes = router;
