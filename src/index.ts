@@ -1,34 +1,29 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { courseRoutes } from "./app/models/course/course.routes";
-import { mentorRoutes } from "./app/models/Mentor/mentor.routes";
-import { studentRoutes } from "./app/models/Student/student.routes";
-import { categoryRoutes } from "./app/models/Category/category.routes";
-import { reviewRoutes } from "./app/models/Review/review.routes";
+import { productsRoutes } from "./app/models/Products/Product.Routes";
+import { categoryRoute } from "./app/models/Category/Category.Routes";
+
 
 dotenv.config();
 
 export const app: Application = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // middleware
 app.use(cors());
 app.use(express.json());
 
-//Routes
-app.use("/api/courses", courseRoutes);
-app.use("/api/metors", mentorRoutes);
-app.use("/api/students", studentRoutes);
-app.use("/api/categorys", categoryRoutes);
-app.use("/api/reviews", reviewRoutes);
+// routes
+app.use('/api/products', productsRoutes);
 
-// test route
+app.use("/api/categories", categoryRoute);
+
+
 app.get("/", (req: Request, res: Response) => {
-  res.send(" LMS Server is Running 🚀");
+  res.send(" Eco Server is Running ");
 });
 
-// start server
 app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
